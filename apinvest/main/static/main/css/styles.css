@@ -1,0 +1,57 @@
+/* Фиксированная высота карусели */
+.carousel-container .carousel {
+    max-width: 100%;
+    height: 500px; /* Фиксированная высота карусели */
+    overflow: hidden; /* Скрытие содержимого, выходящего за границы */
+}
+
+.carousel-container .carousel img {
+    object-fit: cover; /* Масштабирование с сохранением пропорций */
+    width: 100%;
+    height: 100%; /* Заставляет изображение занимать всю высоту */
+}
+
+/* Адаптация для мобильных устройств */
+@media (max-width: 768px) {
+    .carousel-container .carousel {
+        height: 300px; /* Высота для мобильных */
+    }
+}
+
+@media (min-width: 769px) {
+    .carousel-container .carousel {
+        height: 500px; /* Высота для десктопов */
+    }
+}
+
+/* Общие стили */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #f8f9fa;
+    padding: 20px;
+    text-align: center;
+}
+
+nav {
+    padding: 20px;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #007bff;
+}
+
+nav ul li a.active {
+    font-weight: bold;
+    color: #0056b3;
+}

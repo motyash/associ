@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ассоциация Предпринимателей</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #1a4f8b;
+            --secondary-color: #f5f5f5;
+            --accent-color: #e67e22;
+            --text-color: #333;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+        }
+
+        /* Header Styles */
+        .header {
+            background: var(--primary-color);
+            color: white;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .language-switch {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .language-btn {
+            background: none;
+            border: 1px solid white;
+            color: white;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        /* Sidebar Styles */
+        .sidebar {
+            width: 250px;
+            background: var(--secondary-color);
+            height: 100vh;
+            position: fixed;
+            top: 70px;
+            left: 0;
+            padding: 1rem;
+        }
+
+        .nav-menu {
+            list-style: none;
+        }
+
+        .nav-item {
+            margin-bottom: 1rem;
+        }
+
+        .nav-link {
+            display: block;
+            padding: 0.8rem 1rem;
+            color: var(--text-color);
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        .nav-link:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        /* Main Content Styles */
+        .main-content {
+            margin-left: 250px;
+            margin-top: 70px;
+            padding: 2rem;
+        }
+
+        .section {
+            margin-bottom: 3rem;
+        }
+
+        .section-title {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+        }
+
+        /* Card Styles */
+        .card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Carousel Styles */
+        .carousel {
+            position: relative;
+            overflow: hidden;
+            margin: 2rem 0;
+            border-radius: 8px;
+        }
+
+        .carousel-inner {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .carousel-item {
+            min-width: 100%;
+            height: 400px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .carousel-control {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0,0,0,0.5);
+            color: white;
+            padding: 1rem;
+            cursor: pointer;
+            border: none;
+            border-radius: 50%;
+        }
+
+        .carousel-prev {
+            left: 1rem;
+        }
+
+        .carousel-next {
+            right: 1rem;
+        }
+
+        /* Form Styles */
+        .contact-form {
+            max-width: 600px;
+            margin: 2rem 0;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .form-button {
+            background: var(--primary-color);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+                top: 70px;
+            }
+
+            .main-content {
+                margin-left: 0;
+                margin-top: 140px;
+            }
+
+            .nav-menu {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 0.5rem;
+            }
+
+            .nav-item {
+                margin-bottom: 0;
+                flex: 1 1 auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="logo">AP Invest</div>
+        <div class="language-switch">
+            <button class="language-btn" onclick="switchLanguage('ru')">RU</button>
+            <button class="language-btn" onclick="switchLanguage('en')">EN</button>
+        </div>
+    </header>
+
+    <nav class="sidebar">
+        <ul class="nav-menu">
+            <li class="nav-item">
+                <a href="#" class="nav-link" data-section="main">Главная</a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link" data-section="projects">Инвестиционные проекты</a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link" data-section="countries">Реализация по странам</a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link" data-section="representatives">Представительство</a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link" data-section="branches">Филиалы</a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link" data-section="investors">Поиск инвесторов</a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link" data-section="events">Мероприятия</a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link" data-section="contacts">Контакты</a>
+            </li>
+        </ul>
+    </nav>
+
+    <main class="main-content">
+        <section class="section" id="main">
+            <h1 class="section-title">О компании</h1>
+            <div class="card">
+                <p>Ассоциация предпринимателей - это международное объединение успешных бизнесменов, инвесторов и профессионалов в различных отраслях экономики.</p>
+                <p>Наша миссия - создание благоприятных условий для развития международного бизнеса и привлечения инвестиций.</p>
+            </div>
+
+            <h2 class="section-title">Наши ценности</h2>
+            <div class="card">
+                <p>Мы верим в прозрачность, профессионализм и взаимовыгодное сотрудничество. Наша цель - объединить лучших представителей бизнес-сообщества для реализации масштабных международных проектов.</p>
+            </div>
+
+            <div class="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item" style="background-image: url('/api/placeholder/800/400')"></div>
+                    <div class="carousel-item" style="background-image: url('/api/placeholder/800/400')"></div>
+                    <div class="carousel-item" style="background-image: url('/api/placeholder/800/400')"></div>
+                </div>
+                <button class="carousel-control carousel-prev">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="carousel-control carousel-next">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </section>
+
+        <section class="section" id="contacts" style="display: none;">
+            <h2 class="section-title">Контакты</h2>
+            <div class="card">
+                <form class="contact-form">
+                    <div class="form-group">
+                        <label class="form-label">Имя</label>
+                        <input type="text" class="form-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Email</label>
+                        <input type="email" class="form-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Сообщение</label>
+                        <textarea class="form-input" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="form-button">Отправить</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Простое управление навигацией
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const section = e.target.dataset.section;
+                document.querySelectorAll('.section').forEach(s => {
+                    s.style.display = 'none';
+                });
+                document.getElementById(section).style.display = 'block';
+            });
+        });
+
+        // Управление каруселью
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.carousel-item');
+        const slideWidth = slides[0].clientWidth;
+
+        document.querySelector('.carousel-next').addEventListener('click', () => {
+            currentSlide = (currentSlide + 1) % slides.length;
+            updateCarousel();
+        });
+
+        document.querySelector('.carousel-prev').addEventListener('click', () => {
+            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+            updateCarousel();
+        });
+
+        function updateCarousel() {
+            const offset = -currentSlide * slideWidth;
+            document.querySelector('.carousel-inner').style.transform = `translateX(${offset}px)`;
+        }
+
+        // Переключение языка
+        function switchLanguage(lang) {
+            // Здесь будет логика переключения языка
+            console.log(`Switching to ${lang}`);
+        }
+    </script>
+</body>
+</html>
